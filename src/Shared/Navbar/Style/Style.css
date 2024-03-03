@@ -1,3 +1,5 @@
 div li a.active{
     color: white;
+    border-bottom-width: 2px;
+
 }
