@@ -6,21 +6,24 @@ import { TfiGallery } from "react-icons/tfi";
 import "../Navbar/Style/Style.css";
 import { useState } from "react";
 import Marquee from 'react-fast-marquee'
+import Drawer from 'react-modern-drawer'
+import 'react-modern-drawer/dist/index.css'
 
 const Navbar = () => {
   //state
-  const [isOpen, setIsOpen] = useState(false);
+  const [userLinkOpen, setUserLinkOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState)
+  }
 
-  const handleIsOpen = () => {
-    setIsOpen(!isOpen);
-  };
 
   console.log(isOpen);
 
   //user TODO
   const user = false;
 
-  //links
+  //links for guest
   const links = (
     <>
       <li className="">
@@ -68,6 +71,22 @@ const Navbar = () => {
     </>
   );
 
+  //links for user mobile view
+  const userLinks =
+    <>
+      <li className="">
+        <NavLink to={"/"} className="flex flex-col justify-center items-center">
+          <MdHomeMax size={26}></MdHomeMax>
+          <p>Home</p>
+        </NavLink>
+      </li>
+    </>
+
+  //handleUserLink function
+  const handleUserLink = () => {
+    setUserLinkOpen(!userLinkOpen)
+  }
+
   return (
     <div className="bg-[#F72D93] py-4 fixed top-0 z-20 navbar flex-col space-y-5 bg-opacity-90">
       <div className="container mx-auto  space-x-10 px-5 lg:px-0">
@@ -79,12 +98,12 @@ const Navbar = () => {
       </div>
       <div className="container mx-auto px-5 lg:py-1 xl:px-0  flex justify-between relative">
         <div className="space-x-5 md:space-x-0 flex items-center justify-center text-white">
-          <button onClick={handleIsOpen} className="lg:hidden">
+          <button onClick={toggleDrawer} className="lg:hidden">
             <BsMenuUp className="text-2xl"></BsMenuUp>
           </button>
           <Link to={"/"} className="text-2xl font-bold">
-          Logo
-        </Link>
+            Logo
+          </Link>
         </div>
         <ul className=" justify-center gap-10 items-center text-neutral-900 hidden lg:flex">
           {links}
@@ -92,24 +111,50 @@ const Navbar = () => {
 
         <div>
           {user ? (
-            <div className="space-x-5">
-              <button className="btn btn-outline w-24">Dashboard</button>
-              <button className="btn btn-outline w-24">Logout</button>
+            <div className="space-x-5 ">
+              <img onClick={handleUserLink} className="w-12 rounded-full avatar" src="https://i.ibb.co/TkJrbPk/png-transparent-computer-icons-user-profile-woman-avatar-rent-face-people-monochrome-thumbnail.png" alt={'user image'} />
+
             </div>
           ) : (
-            <button className="btn btn-outline w-24 text-white">Login</button>
+            <div className="space-x-5">
+              <img className="w-12 rounded-full avatar" src="https://i.ibb.co/TkJrbPk/png-transparent-computer-icons-user-profile-woman-avatar-rent-face-people-monochrome-thumbnail.png" alt={'user image'} />
+              <button className="btn btn-outline text-white">Login</button>
+
+            </div>
           )}
         </div>
 
-        {/* mobile navigation */}
+        {/*custom user link */}
 
         <ul
-          className={`lg:hidden absolute space-y-2 shadow-lg duration-700  -left-1 p-5 rounded-lg  w-72 bg-[#F72D93] bg-opacity-90 h-fit ${isOpen ? 'top-16' : '-top-[400px]'} `}
+          className={` absolute space-y-5 shadow-lg duration-700 w-72 mx-auto  -left-1 p-5 rounded-lg   bg-[#F72D93] bg-opacity-90 h-fit ${userLinkOpen ? 'top-24  left-[25%] md:left-[60%] lg:left-[70%] xl:left-[80%]' : '-top-[400px] left-[70%]'} `}
         >
-          {links}
+          <h3 className="text-white">MD Abdur Rahman</h3>
+          <Link className="btn btn-outline btn-sm text-white w-full">Dashboard</Link>
+          <button className="btn hover:bg-secondary btn-outline btn-sm w-full text-white">Logout</button>
         </ul>
-
       </div>
+      {/*react drawer mobile navigation */}
+      <Drawer
+        open={isOpen}
+        onClose={toggleDrawer}
+        direction='top'
+        className=' my-16 py-5'
+      >
+        <div className="flex flex-row-reverse justify-between items-center px-5">
+          <div className="">
+            <button onClick={toggleDrawer} className="btn btn-sm bg-red-600 text-white ">close</button>
+          </div>
+          <div className="">
+            <p>logo</p>
+          </div>
+        </div>
+        <ul className="bg-[#f95eac]  py-5 px-5 space-y-5 my-5">
+          {
+            links
+          }
+        </ul>
+      </Drawer>
     </div>
   );
 };
