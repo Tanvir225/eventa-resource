@@ -1,14 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-import { MdHomeMax, MdOutlineConnectWithoutContact } from "react-icons/md";
-import { BiCategory } from "react-icons/bi";
-import { BsMenuUp } from "react-icons/bs";
-import { LuGalleryThumbnails } from "react-icons/lu";
-import { BiMessageSquareEdit } from "react-icons/bi";
 import "../Navbar/Style/Style.css";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
+import UserLink from "./UserLink/UserLink";
+import { BsMenuUp } from "react-icons/bs";
+import { BiMessageSquareEdit } from "react-icons/bi";
 
 const Navbar = () => {
   //state
@@ -22,60 +20,6 @@ const Navbar = () => {
 
   //user TODO
   const user = false;
-
-  //links for guest
-  const links = (
-    <>
-      <li className="">
-        <NavLink to={"/"} className="flex flex-col justify-center items-center">
-          <MdHomeMax size={26}></MdHomeMax>
-          <p>Home</p>
-        </NavLink>
-      </li>
-      <li className="">
-        <NavLink
-          to={"/contact"}
-          className="flex flex-col justify-center items-center"
-        >
-          <MdOutlineConnectWithoutContact
-            size={26}
-          ></MdOutlineConnectWithoutContact>
-          <p>Category </p>
-        </NavLink>
-      </li>
-      <li className="">
-        <NavLink
-          to={"/book"}
-          className="flex flex-col justify-center items-center"
-        >
-          <BiCategory size={26}></BiCategory>
-          <p>Reservations </p>
-        </NavLink>
-      </li>
-
-      <li className="">
-        <NavLink
-          to={"/contact"}
-          className="flex flex-col justify-center items-center"
-        >
-          <MdOutlineConnectWithoutContact
-            size={26}
-          ></MdOutlineConnectWithoutContact>
-          <p>Contact </p>
-        </NavLink>
-      </li>
-
-      <li className="">
-        <NavLink
-          to={"/contact"}
-          className="flex flex-col justify-center items-center"
-        >
-          <LuGalleryThumbnails size={26}></LuGalleryThumbnails>
-          <p>Gallery </p>
-        </NavLink>
-      </li>
-    </>
-  );
 
   //handleUserLink function
   const handleUserLink = () => {
@@ -92,6 +36,7 @@ const Navbar = () => {
           hi
         </Marquee>
       </div>
+
       <div className="container mx-auto px-5 lg:py-1 xl:px-0  flex justify-between relative">
         <div className="space-x-5 md:space-x-0 flex items-center justify-center text-white">
           <button onClick={toggleDrawer} className="lg:hidden">
@@ -102,7 +47,7 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className=" justify-center gap-10 items-center text-neutral-900 hidden lg:flex">
-          {links}
+          <UserLink></UserLink>
         </ul>
 
         <div>
@@ -119,19 +64,21 @@ const Navbar = () => {
               </li>
               <img
                 onClick={handleUserLink}
-                className="w-12 rounded-full avatar"
-                src="https://i.ibb.co/TkJrbPk/png-transparent-computer-icons-user-profile-woman-avatar-rent-face-people-monochrome-thumbnail.png"
-                alt={"user image"}
+                className="size-[50px] bg-slate-500 object-cover rounded-full hover:blur-[2px] duration-500"
+                src="https://source.unsplash.com/300x300/?profile"
+                alt="avatar navigate ui"
               />
             </ul>
           ) : (
-            <div className="space-x-5">
+            <div className="flex items-center gap-5">
               <img
-                className="w-12 rounded-full avatar"
-                src="https://i.ibb.co/TkJrbPk/png-transparent-computer-icons-user-profile-woman-avatar-rent-face-people-monochrome-thumbnail.png"
-                alt={"user image"}
+                className="size-[50px] bg-slate-500 object-cover rounded-full hover:blur-[1px] duration-500"
+                src="https://source.unsplash.com/300x300/?profile"
+                alt="avatar navigate ui"
               />
-              <Link to={"/login"} className="btn btn-outline text-white">Login</Link>
+              <Link to={"/login"} className="btn btn-outline text-white">
+                Login
+              </Link>
             </div>
           )}
         </div>
@@ -149,11 +96,12 @@ const Navbar = () => {
           <Link className="btn btn-outline btn-sm text-white w-full">
             Dashboard
           </Link>
-          <button className="btn hover:bg-secondary btn-outline btn-sm w-full text-white">
+          <button className="btn  btn-outline btn-sm w-full text-white">
             Logout
           </button>
         </ul>
       </div>
+
       {/*react drawer mobile navigation */}
       <Drawer
         open={isOpen}
@@ -175,7 +123,7 @@ const Navbar = () => {
             <p>logo</p>
           </div>
         </div>
-        <ul className="bg-[#f95eac]  py-5 px-5 space-y-5 my-5">{links}</ul>
+        <ul className="bg-[#f95eac]  py-5 px-5 space-y-5 my-5"><UserLink></UserLink></ul>
       </Drawer>
     </div>
   );

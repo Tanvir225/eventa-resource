@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaArrowLeft, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const VendorSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
 
   //password  visibility toggle
   const handlePasswordShow = () => {
-      setIsShowPassword(!showPassword)
+    setIsShowPassword(!showPassword);
   };
 
-  //login functionality
+  //user-sign-up functionality
   const {
     register,
     handleSubmit,
@@ -22,14 +22,14 @@ const Login = () => {
   const onSubmit = (data) => console.log(data, errors);
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-[#8EA7E9]/20 p-5 md:p-0">
+    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-[#8EA7E9]/20 p-5 md:p-5">
       <div className="flex justify-between w-[90%] lg:w-[80%]  items-center">
         <Link to={"/"} className="btn bg-[#FF69B4] text-white">
           <FaArrowLeft size={26} className=""></FaArrowLeft> go home
         </Link>
         <p>logo</p>
       </div>
-      <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[90%] md:w-[80%] lg:h-[80%]">
+      <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-[100%]">
         {/* register design side  */}
         <div className="relative hidden h-full items-center justify-center bg-[#FF69B4] md:flex md:w-[60%] lg:w-[40%]">
           <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#9eb6f8] to-[#6585dd]"></div>
@@ -48,12 +48,38 @@ const Login = () => {
         {/* input side  */}
         <div className="flex w-full flex-col justify-center bg-white py-10 lg:w-[60%]">
           <h2 className="pb-8 text-center text-3xl font-bold text-[#FF69B4]">
-            Login Here
+            Vendor Sign up
           </h2>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex  w-full flex-col items-center justify-center gap-4"
           >
+            <input
+              className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              type="text"
+              placeholder="Name"
+              {...register("name")}
+              required
+            />
+            <input
+              className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              type="tel"
+              placeholder="Phone"
+              {...register("phone")}
+              required
+            />
+            <select
+              required
+              defaultValue="default"
+              {...register("vendor")}
+              className="w-[80%] text-gray-400 rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+            >
+              <option value="default">Select vendor type</option>
+              <option value="car">Car</option>
+              <option value="flower">Flower</option>
+              <option value="convention hall">Convention Hall</option>
+              <option value="photographer">Photographer</option>
+            </select>
             <input
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="email"
@@ -71,56 +97,46 @@ const Login = () => {
                 required
               />
               {showPassword ? (
-                <FaEyeSlash onClick={handlePasswordShow} className="absolute top-[35%] right-[15%] md:right-[22%]"></FaEyeSlash>
+                <FaEyeSlash
+                  onClick={handlePasswordShow}
+                  className="absolute top-[35%] right-[15%] md:right-[22%]"
+                ></FaEyeSlash>
               ) : (
-                <FaEye onClick={handlePasswordShow} className="absolute top-[35%] right-[15%] md:right-[22%]"></FaEye>
+                <FaEye
+                  onClick={handlePasswordShow}
+                  className="absolute top-[35%] right-[15%] md:right-[22%]"
+                ></FaEye>
               )}
             </div>
+
+            <input
+              className="w-[80%] text-gray-400 rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              type="file"
+              placeholder="profile"
+              name="profile"
+              {...register("profile")}
+              required
+            />
             <p className="text-[14px] text-gray-400">
-              Do not have an account ?{" "}
+              Already have an account ?{" "}
               <Link
-                to={"/user-sign-up"}
+                to={"/login"}
                 className="text-[#FF69B4] font-bold underline "
               >
-                Create one
+                Login
               </Link>
             </p>
             <button
               className="w-[80%] rounded-lg bg-[#FF69B4] px-6 py-2 font-medium text-white md:w-[60%]"
               type="submit"
             >
-              Login
+              Signup
             </button>
           </form>
-          {/* divider  */}
-          <div className="my-8 flex items-center px-8">
-            <hr className="flex-1" />
-            <div className="mx-4 text-gray-400">OR</div>
-            <hr className="flex-1" />
-          </div>
-          {/* sign with google */}
-          <div className="mx-auto flex h-[50px] w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow">
-            <div className="flex h-full w-[50%] items-center bg-[#FF69B4] pl-4 text-sm text-white">
-              Sign With
-            </div>
-            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#FF69B4] group-hover:hidden"></span>
-            <span className="pr-4 text-4xl font-bold text-[#FF69B4]">
-              <FaGoogle></FaGoogle>
-            </span>
-          </div>
-          <p className="text-[14px] text-center mt-5 font-semibold text-gray-600">
-            Do not have an vendor account ?{" "}
-            <Link
-              to={"/vendor-sign-up"}
-              className="text-[#FF69B4] font-bold underline "
-            >
-              Create one
-            </Link>
-          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default VendorSignUp;
