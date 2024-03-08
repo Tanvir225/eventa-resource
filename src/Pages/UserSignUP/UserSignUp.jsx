@@ -104,6 +104,7 @@ const UserSignUp = () => {
               {...register("profile")}
               required
             />
+
             <p className="text-[14px] text-gray-400">
               Already have an account ?{" "}
               <Link
@@ -127,3 +128,4 @@ const UserSignUp = () => {
 };
 
 export default UserSignUp;
+

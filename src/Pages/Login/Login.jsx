@@ -109,7 +109,7 @@ const Login = () => {
             </span>
           </div>
           <p className="text-[14px] text-center mt-5 font-semibold text-gray-600">
-            Do not have an vendor account ?{" "}
+            Do not have a vendor account ?{" "}
             <Link
               to={"/vendor-sign-up"}
               className="text-[#FF69B4] font-bold underline "

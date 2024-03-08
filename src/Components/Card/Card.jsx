@@ -20,7 +20,7 @@ const Card = () => {
       {/* profile name & role */}
       <div className="pt-8 text-center space-y-1">
         <h1 className="text-xl md:text-2xl">Tolarbagh Convention Hall</h1>
-        <Link className="text-[#FF69B4] font-semibold hover:text-gray-400 text-sm">
+        <Link to={'https://maps.app.goo.gl/7dHRhmopQbzj8qmn7'} className="text-[#FF69B4] font-semibold hover:text-gray-400 text-sm">
           <p className="flex justify-center items-center gap-2 py-2">
             <FaLocationArrow></FaLocationArrow>View Live Location
           </p>
