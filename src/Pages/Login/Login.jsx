@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import animation from "../../assets/landing_animation.json"
+import Lottie from "lottie-react";
 
 const Login = () => {
   //state
@@ -36,13 +38,14 @@ const Login = () => {
           <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#9eb6f8] to-[#6585dd]"></div>
           <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#9eb6f8] to-[#6585dd] transition-all"></div>
           <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#9eb6f8] to-[#6585dd]"></div>
-          <div className="space-y-2 text-center">
+          <div className="space-y-2 text-center mt-16">
             <h2 className="text-3xl font-medium text-white/80 ">
               Welcome Back
             </h2>
             <p className="animate-bounce text-2xl font-bold text-white/60">
               Eventa
             </p>
+            <Lottie animationData={animation} className="h-24"></Lottie>
           </div>
         </div>
         {/* input side  */}
