@@ -23,7 +23,7 @@ const UserSignUp = () => {
   const onSubmit = (data) => console.log(data, errors);
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-[#8EA7E9]/20 p-5 md:p-5">
+    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-base-100 p-5 md:p-5">
       <div className="flex justify-between w-[90%] lg:w-[80%]  items-center">
         <Link to={"/"} className="btn bg-[#FF69B4] text-white">
           <FaArrowLeft size={26} className=""></FaArrowLeft> go home
@@ -33,10 +33,10 @@ const UserSignUp = () => {
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-[100%]">
         {/* register design side  */}
         <div className="relative hidden h-full items-center justify-center bg-[#FF69B4] md:flex md:w-[60%] lg:w-[40%]">
-          <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#9eb6f8] to-[#6585dd]"></div>
-          <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#9eb6f8] to-[#6585dd]"></div>
-          <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#9eb6f8] to-[#6585dd] transition-all"></div>
-          <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#9eb6f8] to-[#6585dd]"></div>
+          <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#f58be7] to-[#6585dd]"></div>
+          <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#f58be7] to-[#6585dd]"></div>
+          <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#f58be7] to-[#6585dd] transition-all"></div>
+          <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#f58be7] to-[#6585dd]"></div>
           <div className="space-y-2 text-center mt-16">
             <h2 className="text-3xl font-medium text-white/80 ">
               Welcome Back
@@ -60,8 +60,8 @@ const UserSignUp = () => {
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="text"
               placeholder="Name"
-              {...register("name")}
-              required
+              {...register("name",{required:"Name is required"})}
+              
             />
             <input
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
@@ -74,7 +74,7 @@ const UserSignUp = () => {
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="email"
               placeholder="Email"
-              {...register("email")}
+              {...register("email",{required:"Email is required"})}
               required
             />
             <div className="w-full text-center relative">

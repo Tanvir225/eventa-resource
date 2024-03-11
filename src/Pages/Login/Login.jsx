@@ -4,6 +4,7 @@ import { FaArrowLeft, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import animation from "../../assets/landing_animation.json"
 import Lottie from "lottie-react";
+import { RiAlertLine } from "react-icons/ri";
 
 const Login = () => {
   //state
@@ -24,7 +25,7 @@ const Login = () => {
   const onSubmit = (data) => console.log(data, errors);
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-[#8EA7E9]/20 p-5 md:p-0">
+    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-base-100 p-5 md:p-0">
       <div className="flex justify-between w-[90%] lg:w-[80%]  items-center">
         <Link to={"/"} className="btn bg-[#FF69B4] text-white">
           <FaArrowLeft size={26} className=""></FaArrowLeft> go home
@@ -34,10 +35,10 @@ const Login = () => {
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[90%] md:w-[80%] lg:h-[80%]">
         {/* register design side  */}
         <div className="relative hidden h-full items-center justify-center bg-[#FF69B4] md:flex md:w-[60%] lg:w-[40%]">
-          <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#9eb6f8] to-[#6585dd]"></div>
-          <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#9eb6f8] to-[#6585dd]"></div>
-          <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#9eb6f8] to-[#6585dd] transition-all"></div>
-          <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#9eb6f8] to-[#6585dd]"></div>
+          <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#f58be7] to-[#6585dd]"></div>
+          <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#f58be7] to-[#6585dd]"></div>
+          <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#f58be7] to-[#6585dd] transition-all"></div>
+          <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#f58be7] to-[#6585dd]"></div>
           <div className="space-y-2 text-center mt-16">
             <h2 className="text-3xl font-medium text-white/80 ">
               Welcome Back
@@ -50,9 +51,12 @@ const Login = () => {
         </div>
         {/* input side  */}
         <div className="flex w-full flex-col justify-center bg-white py-10 lg:w-[60%]">
-          <h2 className="pb-8 text-center text-3xl font-bold text-[#FF69B4]">
+          <h2 className="text-center text-3xl font-bold text-[#FF69B4] mb-3">
             Login Here
           </h2>
+          {
+            errors.email || errors.password ? <p className="text-red-500 font-semibold justify-center gap-2 flex items-center py-3"><RiAlertLine ></RiAlertLine>{errors?.email?.message || errors?.password?.message}</p> : null
+          }
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex  w-full flex-col items-center justify-center gap-4"
@@ -61,8 +65,8 @@ const Login = () => {
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="email"
               placeholder="Email"
-              {...register("email")}
-              required
+              {...register("email", {required:"Email is required"})}
+              
             />
             <div className="w-full text-center relative">
               <input
@@ -70,14 +74,15 @@ const Login = () => {
                 type={`${showPassword ? "text" : "password"}`}
                 placeholder="Password"
                 name="password"
-                {...register("password")}
-                required
+                {...register("password",{required:"Password is required"})}
+                
               />
               {showPassword ? (
-                <FaEyeSlash onClick={handlePasswordShow} className="absolute top-[35%] right-[15%] md:right-[22%]"></FaEyeSlash>
+                <FaEyeSlash onClick={handlePasswordShow} className="absolute top-[20%] right-[15%] md:right-[22%]"></FaEyeSlash>
               ) : (
-                <FaEye onClick={handlePasswordShow} className="absolute top-[35%] right-[15%] md:right-[22%]"></FaEye>
+                <FaEye onClick={handlePasswordShow} className="absolute top-[20%] right-[15%] md:right-[22%]"></FaEye>
               )}
+              <p className="text-left w-[80%] md:w-[60%] mx-auto my-1"><Link>Forget password?</Link></p>
             </div>
             <p className="text-[14px] text-gray-400">
               Do not have an account ?{" "}
@@ -89,14 +94,14 @@ const Login = () => {
               </Link>
             </p>
             <button
-              className="w-[80%] rounded-lg bg-[#FF69B4] px-6 py-2 font-medium text-white md:w-[60%]"
+              className="w-[80%] rounded-lg bg-[#FF69B4] px-6 py-1 font-medium text-white md:w-[60%]"
               type="submit"
             >
               Login
             </button>
           </form>
           {/* divider  */}
-          <div className="my-8 flex items-center px-8">
+          <div className="my-3 flex items-center px-8">
             <hr className="flex-1" />
             <div className="mx-4 text-gray-400">OR</div>
             <hr className="flex-1" />
