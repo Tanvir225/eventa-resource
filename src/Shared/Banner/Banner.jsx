@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Banner = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
@@ -33,15 +33,26 @@ const Banner = () => {
     setCurrentSlider((currentSlider) =>
       currentSlider === 0 ? sliders.length - 1 : currentSlider - 1
     );
-  const nextSlider = () =>
-    setCurrentSlider((currentSlider) =>
-      currentSlider === sliders.length - 1 ? 0 : currentSlider + 1
-    );
+  const nextSlider = useCallback(
+    () =>
+      setCurrentSlider((currentSlider) =>
+        currentSlider === sliders.length - 1 ? 0 : currentSlider + 1
+      ),
+    [sliders.length]
+  );
   const isSmallScreen = window.innerWidth <= 768;
+
+  // if you don't want to change the slider automatically then you can just remove the useEffect
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlider();
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [nextSlider]);
 
   return (
     <div
-      className="w-full -mt-6 lg:-mt-3 h-80 sm:h-96 md:h-[540px] lg:h-[600px] xl:h-[600px] flex flex-col xl:flex-row items-center justify-center gap-5 lg:gap-10 relative bg-cover before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear  overflow-hidden"
+      className="w-full  -mt-6 lg:-mt-3 h-60  md:h-[420px] lg:h-[480px]  flex flex-col xl:flex-row items-center justify-center gap-5 lg:gap-10 relative bg-cover before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear  overflow-hidden"
       style={{
         backgroundImage: `url(${
           currentSlider === 0
@@ -51,14 +62,13 @@ const Banner = () => {
       }}
     >
       {/* arrow */}
-      <div className="absolute bottom-5 flex gap-3 z-50 px-5">
+      <div className="absolute  flex left-0 bottom-5 z-50 px-5 gap-3">
         {/* arrow left */}
         <button
           onClick={prevSlider}
           className="flex justify-center  items-center hover:bg-white/30 rounded-full w-20 h-10 md:w-8 md:h-8"
         >
           <svg
-          
             viewBox="0 0 1024 1024"
             className="w-4 h-4 md:w-6 md:h-6 icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -106,14 +116,14 @@ const Banner = () => {
         </button>
       </div>
       {/* text container here */}
-      <div className="w-1/2 px-4 left-0 absolute drop-shadow-lg text-white rounded-lg">
+      <div className="w-1/2 lg:w-[35%] px-5 left-0 absolute drop-shadow-lg text-white rounded-lg">
         <h1 className="lg:text-3xl mb-3">{sliders[currentSlider].title}</h1>
         <p className="text-xs sm:text-sm md:text-base lg:text-lg">
           {sliders[currentSlider].des}
         </p>
       </div>
       {/* slider container */}
-      <div className="w-1/2 ml-auto overflow-hidden  absolute -right-5 lg:-right-16 z-50 px-4 py-10">
+      <div className="w-1/2 lg:w-[65%] ml-auto overflow-hidden  absolute -right-5 lg:-right-16 z-50 px-4 py-10">
         <div
           className="ease-linear duration-300 flex gap-4 items-center"
           style={{
