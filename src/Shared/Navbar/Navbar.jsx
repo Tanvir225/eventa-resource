@@ -19,7 +19,7 @@ const Navbar = () => {
   console.log(isOpen);
 
   //user TODO
-  const user = false;
+  const user = true;
 
   //handleUserLink function
   const handleUserLink = () => {
@@ -71,12 +71,8 @@ const Navbar = () => {
             </ul>
           ) : (
             <div className="flex items-center gap-5">
-              <img
-                className="size-[50px] bg-slate-500 object-cover rounded-full hover:blur-[1px] duration-500"
-                src="https://source.unsplash.com/300x300/?profile"
-                alt="avatar navigate ui"
-              />
-              <Link to={"/login"} className="btn btn-outline text-white">
+             
+              <Link to={"/login"} className="btn btn-outline text-white w-full md:w-32 lg:w-48">
                 Login
               </Link>
             </div>
@@ -88,8 +84,8 @@ const Navbar = () => {
         <ul
           className={` absolute space-y-5 shadow-lg duration-700 w-72 mx-auto  -left-1 p-5 rounded-lg   bg-[#F72D93] bg-opacity-90 h-fit ${
             userLinkOpen
-              ? "top-24 sm:left-[20%]  left-[25%] md:left-[60%] lg:left-[70%] xl:left-[80%]"
-              : "-top-[400px] left-[70%]"
+              ? "top-24 sm:left-[20%]  left-[25%] md:left-[60%] lg:left-[80%] xl:left-[80%]"
+              : "-top-[400px] left-[60%]"
           } `}
         >
           <h3 className="text-white">MD Abdur Rahman</h3>
