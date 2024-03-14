@@ -28,16 +28,6 @@ const FilterVendor = () => {
 
   return (
     <div>
-      {/* heading */}
-      <div className="space-y-3 border-y-2 border-[#FF1493] my-10 py-3 w-[85%] md:w-[65%] lg:w-[50%]  mx-auto">
-        <h1 className="text-2xl font-bold text-[#FF69B4] text-center">
-          Fine-Tune Your Selection
-        </h1>
-        <p className="text-lg font-semibold text-[#808080] text-center">
-          Find the best wedding vendors of trusted reviews
-        </p>
-      </div>
-
       {/* select section */}
       <div className="flex flex-col  lg:flex-row justify-center  gap-5">
         {/*  dropdown for selecting vendor type */}
@@ -75,9 +65,7 @@ const FilterVendor = () => {
           {/* dropdown - options  */}
           <div
             className={`${
-              isOpen
-                ? "visible top-0 opacity-100"
-                : "hidden -top-4 opacity-0"
+              isOpen ? "visible top-0 opacity-100" : "hidden -top-4 opacity-0"
             } relative mx-auto my-4 w-full rounded-xl py-4  border-[#FF69B4] border-2 duration-300`}
           >
             {vendorOptions?.map((option, idx) => (
@@ -132,16 +120,14 @@ const FilterVendor = () => {
           {/* dropdown - options  */}
           <div
             className={`${
-              isPlace
-                ? "visible top-0 opacity-100"
-                : "hidden -top-4 opacity-0"
-            } relative mx-auto my-4 w-full rounded-xl py-4 border-2 border-[#FF69B4]  duration-300`}
+              isPlace ? "visible top-0 opacity-100" : "hidden -top-4 opacity-0"
+            } relative mx-auto my-4 w-full rounded-xl py-4  border-[#FF69B4] border-2 duration-300`}
           >
             {areaOptions?.map((option, idx) => (
               <div
                 key={idx}
                 onClick={(e) => {
-                  selectedPlace(e.target.textContent);
+                  setSelectedPlace(e.target.textContent);
                   setIsPlace(false);
                 }}
                 className="px-6 py-2 text-gray-500 hover:bg-gray-100"
@@ -154,8 +140,10 @@ const FilterVendor = () => {
 
         {/* end */}
 
-        <div className="">
-            <button className="btn btn-outline bg-[#FF1493] w-32 text-white">Get Started</button>
+        <div className="lg:-mt-1">
+          <button className="btn btn-outline bg-[#FF1493] w-32 text-white">
+            Get Started
+          </button>
         </div>
       </div>
     </div>
