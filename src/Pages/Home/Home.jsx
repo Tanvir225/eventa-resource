@@ -1,8 +1,8 @@
 //import Card from "../../Components/Card/Card";
 import Heading from "../../Components/Heading/Heading";
-import PopularCard from "../../Components/PopularCard/PopularCard";
 import Banner from "../../Shared/Banner/Banner";
 import FilterVendor from "./FilterVendor/FilterVendor";
+import PopularVendor from "./PopularVendor/PopularVendor";
 
 const Home = () => {
   return (
@@ -24,6 +24,7 @@ const Home = () => {
 
         {/* popular Venus Heading */}
         <Heading heading="Popular Venue Searches" subHeading="Trending Venues That Everyone's Talking About!"></Heading>
+        <PopularVendor></PopularVendor>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const Navbar = () => {
   console.log(isOpen);
 
   //user TODO
-  const user = true;
+  const user = false;
 
   //handleUserLink function
   const handleUserLink = () => {

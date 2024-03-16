@@ -86,7 +86,7 @@ const VendorSignUp = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className=" flex  items-center justify-between rounded-xl px-6 py-2 bg-white border  border-[#FF69B4]"
               >
-                <h1 className="font-semibold text-gray-600">{selectedValue}</h1>
+                <h1 className=" text-gray-600">{selectedValue}</h1>
                 <svg
                   className={`${
                     isOpen ? "-rotate-180" : "rotate-0"

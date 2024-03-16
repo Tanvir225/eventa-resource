@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 const PopularCard = ({image,name,location}) => {
   return (
-    <div className=" bg-slate-100/70 px-5 py-4 mx-auto rounded-2xl space-y-3 shadow-md group">
+    <div className=" bg-slate-100/70 px-5  py-4 mx-auto rounded-2xl space-y-3 shadow-md group">
       {/* Card Image */}
-      <div className="relative">
+      <div className="relative w-full">
         <img
-          className="w-full h-[190px] bg-gray-400 rounded-2xl group-hover:scale-110 duration-300"
+          className="w-full h-[30vh]  bg-gray-400 rounded-2xl group-hover:scale-110 duration-300"
           src={image}
-          alt="card navigate ui"
+          alt={`Image of ${name}`}
         />
         <p className="absolute top-1 right-1 bg-[#FF69B4] px-2 py-1 rounded-lg text-white">
           popular
