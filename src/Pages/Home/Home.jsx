@@ -4,6 +4,9 @@ import Banner from "../../Shared/Banner/Banner";
 import FilterVendor from "./FilterVendor/FilterVendor";
 import PopularVendor from "./PopularVendor/PopularVendor";
 
+import PopularVenus from "./PopularVenus/PopularVenus";
+
+
 const Home = () => {
   return (
     <div className="">
@@ -23,7 +26,11 @@ const Home = () => {
 
 
         {/* popular Venus Heading */}
-        <Heading heading="Popular Venue Searches" subHeading="Trending Venues That Everyone's Talking About!"></Heading>
+        <Heading heading="Popular Venues " subHeading="Trending Venues That Everyone's Talking About!"></Heading>
+        <PopularVenus></PopularVenus>
+
+        {/* popular serach */}
+        <Heading heading="Trendy Vendors" subHeading="Discover Our Services!"></Heading>
         <PopularVendor></PopularVendor>
       </div>
     </div>

@@ -42,7 +42,7 @@ const Banner = () => {
   );
   const isSmallScreen = window.innerWidth <= 768;
 
-  // if you don't want to change the slider automatically then you can just remove the useEffect
+  //  change the slider automatically by useEffect
   useEffect(() => {
     const intervalId = setInterval(() => {
       nextSlider();

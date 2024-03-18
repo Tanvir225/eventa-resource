@@ -1,0 +1,27 @@
+[
+    {
+        "_id": 1,
+        "name":"Convention Hall",
+        "image":"https://source.unsplash.com/350x200/?hall"
+    },
+    {
+        "_id": 2,
+        "name":"Photographer",
+        "image":"https://source.unsplash.com/350x200/?photographer"
+    },
+    {
+        "_id": 3,
+        "name":"Eventa Car",
+        "image":"https://source.unsplash.com/350x200/?car"
+    },
+    {
+        "_id": 4,
+        "name":"Flower",
+        "image":"https://source.unsplash.com/350x200/?flower"
+    },
+    {
+        "_id": 5,
+        "name":"Groom Wear",
+        "image":"https://source.unsplash.com/350x200/?bridal wear"
+    }
+]

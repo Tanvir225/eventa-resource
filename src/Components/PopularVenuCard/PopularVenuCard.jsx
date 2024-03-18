@@ -2,17 +2,17 @@
 import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const PopularCard = ({image,name,location}) => {
+const PopularVenuCard = ({image,name,location}) => {
   return (
-    <div className=" bg-slate-100/70 px-5  py-4 mx-auto rounded-2xl space-y-3 shadow-md group">
+    <div className=" bg-slate-100/70 px-3  py-4 mx-auto rounded-lg space-y-3 shadow-md group">
       {/* Card Image */}
       <div className="relative w-full">
         <img
-          className="w-full h-[30vh]  bg-gray-400 rounded-2xl group-hover:scale-110 duration-300"
+          className="w-full h-[30vh]  bg-gray-400 rounded-2xl group-hover:scale-105 duration-300"
           src={image}
           alt={`Image of ${name}`}
         />
-        <p className="absolute top-1 right-1 bg-[#FF69B4] px-2 py-1 rounded-lg text-white">
+        <p className="absolute top-1 right-2 bg-[#FF69B4] px-2 py-1 rounded-lg text-white">
           popular
         </p>
       </div>
@@ -31,9 +31,9 @@ const PopularCard = ({image,name,location}) => {
         </Link>
         {/* rating  */}
       </div>
-      {/* Price and action button */}
-      <div className="flex justify-between items-center font-medium">
-        <button className="w-full bg-[#FF1493] text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900">
+      {/*  action button */}
+      <div className="flex justify-center items-center font-medium">
+        <button className="w-[80%] bg-[#FF1493] text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900">
           View Profile
         </button>
       </div>
@@ -41,4 +41,4 @@ const PopularCard = ({image,name,location}) => {
   );
 };
 
-export default PopularCard;
+export default PopularVenuCard;

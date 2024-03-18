@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -8,17 +7,18 @@ import "swiper/css/pagination";
 
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
-import PopularVendorCard from "../../../Components/PopularVendorCard/PopularVendorCard";
+import { useEffect, useState } from "react";
+import PopularVenuCard from '../../../Components/PopularVenuCard/PopularVenuCard';
 
-const PopularVendor = () => {
+
+const PopularVenus = () => {
   //state
-  const [vendors, setVendors] = useState([]);
-
-  //useEffect for data fetching
+  const [popularVenus, setPopularVenus] = useState([]);
+  //fetch data
   useEffect(() => {
-    fetch("./category.json")
-      .then((response) => response.json())
-      .then((data) => setVendors(data));
+    fetch("./popularVendor.json")
+      .then((res) => res.json())
+      .then((data) => setPopularVenus(data));
   }, []);
 
   const isSmallScreen = window.innerWidth <= 768;
@@ -27,7 +27,7 @@ const PopularVendor = () => {
     <div>
       <Swiper
         slidesPerView={`${isSmallScreen ? 1 : 3}`}
-        spaceBetween={20}
+        spaceBetween={30}
         freeMode={true}
         pagination={{
           clickable: true,
@@ -35,12 +35,13 @@ const PopularVendor = () => {
         modules={[FreeMode, Pagination]}
         className="mySwiper"
       >
-        {vendors?.map((vendor) => (
+        {popularVenus.map((vendor) => (
           <SwiperSlide key={vendor._id}>
-            <PopularVendorCard
+            <PopularVenuCard
               image={vendor.image}
               name={vendor.name}
-            ></PopularVendorCard>
+              location={vendor.location}
+            ></PopularVenuCard>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -48,4 +49,4 @@ const PopularVendor = () => {
   );
 };
 
-export default PopularVendor;
+export default PopularVenus;

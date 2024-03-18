@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#F72D93] py-4 fixed top-0 z-20 navbar flex-col space-y-5 bg-opacity-90">
+    <div className="bg-[#ce1446] py-4 fixed top-0 z-20 navbar flex-col space-y-5 bg-opacity-90">
       <div className="container mx-auto  space-x-10 px-5 lg:px-0">
         <Link to={"/"} className="text-2xl text-white font-bold">
           Eventa
