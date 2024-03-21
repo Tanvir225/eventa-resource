@@ -27,15 +27,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#ce1446] py-4 fixed top-0 z-20 navbar flex-col space-y-5 bg-opacity-90">
-      <div className="container mx-auto  space-x-10 px-5 lg:px-0">
+    <div className="bg-[#ce1446]  fixed top-0 z-20 navbar flex-col space-y-5 bg-opacity-90">
+      {/* <div className="container mx-auto  space-x-10 px-5 lg:px-0">
         <Link to={"/"} className="text-2xl text-white font-bold">
           Eventa
         </Link>
         <Marquee className="bg-white rounded-lg container mx-auto p-1 lg:px-0">
           hi
         </Marquee>
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-5 lg:py-1 xl:px-0  flex justify-between relative">
         <div className="space-x-5 md:space-x-0 flex items-center justify-center text-white">
@@ -46,7 +46,7 @@ const Navbar = () => {
             Logo
           </Link>
         </div>
-        <ul className=" justify-center gap-10 items-center text-neutral-900 hidden lg:flex">
+        <ul className=" justify-center gap-10 items-center text-gray-300 hidden lg:flex">
           <UserLink></UserLink>
         </ul>
 

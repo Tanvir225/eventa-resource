@@ -21,6 +21,8 @@ const PopularVendor = () => {
       .then((data) => setVendors(data));
   }, []);
 
+  console.log(vendors);
+
   const isSmallScreen = window.innerWidth <= 768;
 
   return (
